@@ -22,6 +22,7 @@ public class Conta {
 
     public void depositar(double valor){
         if(valor > 0) {
+            if()
             saldo += valor;
         }
 
@@ -45,18 +46,16 @@ public class Conta {
 
     }
 
+    private double calcularLimiteUsado(){
+        return limiteChequeEspecial - chequeEspecial;
+    }
+
 
     private double calcularJurosChequeEspecial(){
-        double juros = 0;
-        if(usouLimiteCheque){
-            double valorChequeUsado = limiteChequeEspecial - chequeEspecial;
-            juros = valorChequeUsado * 0.2;
-
-        }
-        return juros;
+        return calcularLimiteUsado() * 0.2;
     }
 
     private void cobrarJuros(){
-        if()
+
     }
 }
