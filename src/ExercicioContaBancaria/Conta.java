@@ -22,23 +22,24 @@ public class Conta {
 
     public void depositar(double valor){
         if(valor > 0) {
-            if()
             saldo += valor;
+            System.out.printf("Depósito de R$ %.2f efetuado com sucesso. \n", valor);
+        }else{
+            System.out.println("Depósito não realizado.");
         }
 
     }
 
-    public void debitar(double valor){
-        if(valor < saldo) {
+    private void reporChequeEspecial(double valor){
+        chequeEspecial += valor;
+        saldo -= valor;
+        System.out.printf("Reposição de Cheque especial: R$ %.2f \n", valor);
+    }
+
+    public void sacar(double valor){
+        if(valor <= saldo + chequeEspecial) {
             saldo -= valor;
-            System.out.printf("Saque: R$ %s \n", valor);
-
-        }else if (valor < saldo + chequeEspecial){
-            chequeEspecial -= valor - saldo;
-            double valorAtualizado  = valor - saldo;
-            saldo -= valorAtualizado;
-
-            usouLimiteCheque = true;
+            System.out.printf("Saque de R$ %s efetuado com sucesso. \n", valor);
 
         }else{
             System.out.println("Saldo insuficiente.");
@@ -56,6 +57,7 @@ public class Conta {
     }
 
     private void cobrarJuros(){
+        saldo -= calcularJurosChequeEspecial();
 
     }
 }

@@ -7,6 +7,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         Conta conta = new Conta(500);
+        double valor;
 
         System.out.println(" ============================================");
         System.out.println(" |      BEM-VINDO AO SISTEMA BANCO GB       |");
@@ -44,7 +45,17 @@ public class Main {
                 case 3:
                     System.out.println(" --------------------------------------------");
                     System.out.println("   Depositar na conta: ");
-                    System.out.printf("   R$ %.2f \n", conta.getChequeEspecial());
+                    System.out.print("   Digite o valor a ser depositado: ");
+                    valor = scan.nextDouble();
+                    conta.depositar(valor);
+                    System.out.println(" --------------------------------------------");
+                    break;
+                case 4:
+                    System.out.println(" --------------------------------------------");
+                    System.out.println("   Sacar da conta: ");
+                    System.out.print("   Digite o valor a ser sacado: ");
+                    valor = scan.nextDouble();
+                    conta.sacar(valor);
                     System.out.println(" --------------------------------------------");
                     break;
                 default:
