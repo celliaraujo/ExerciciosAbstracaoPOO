@@ -11,7 +11,7 @@ public class Main {
 
         System.out.println(" ============================================");
         System.out.println(" |      BEM-VINDO AO SISTEMA BANCO GB       |");
-        System.out.println(" ============================================");
+        System.out.println(" ==========É G de good. É B de bank==========");
 
         int option = 0;
 
@@ -29,37 +29,36 @@ public class Main {
 
             option = scan.nextInt();
 
-            switch(option){
-                case 1:
+            switch (option) {
+                case 1 -> {
                     System.out.println(" --------------------------------------------");
                     System.out.println("   Consultar saldo: ");
                     System.out.printf("   R$ %.2f \n", conta.getSaldo());
                     System.out.println(" --------------------------------------------");
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println(" --------------------------------------------");
                     System.out.println("   Consultar cheque especial: ");
                     System.out.printf("   R$ %.2f \n", conta.getChequeEspecial());
                     System.out.println(" --------------------------------------------");
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println(" --------------------------------------------");
                     System.out.println("   Depositar na conta: ");
                     System.out.print("   Digite o valor a ser depositado: ");
                     valor = scan.nextDouble();
                     conta.depositar(valor);
                     System.out.println(" --------------------------------------------");
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println(" --------------------------------------------");
                     System.out.println("   Sacar da conta: ");
                     System.out.print("   Digite o valor a ser sacado: ");
                     valor = scan.nextDouble();
                     conta.sacar(valor);
                     System.out.println(" --------------------------------------------");
-                    break;
-                default:
-                    System.out.println("Opção inválida...");
+                }
+                default -> System.out.println("Opção inválida...");
             }
 
         }while(option != 7);
