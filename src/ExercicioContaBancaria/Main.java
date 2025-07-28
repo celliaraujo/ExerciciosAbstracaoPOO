@@ -12,65 +12,95 @@ public class Main {
         Conta conta = new Conta(500);
         double valor;
 
-        System.out.println(" ============================================");
-        System.out.println(" |      BEM-VINDO AO SISTEMA BANCO GB       |");
-        System.out.println(" ==========É G de good. É B de bank==========");
+        System.out.println(
+                """
+                ==================================
+                         SISTEMA BANCO GB
+                ======== Seja Bem-Vindo! =========
+                """);
 
         int option = 0;
 
         do {
-            System.out.println("    1 - Consultar saldo");
-            System.out.println("    2 - Consultar limite do cheque especial");
-            System.out.println("    3 - Depositar");
-            System.out.println("    4 - Sacar");
-            System.out.println("    5 - Pagar boleto");
-            System.out.println("    6 - Verificar se está no cheque especial");
-            System.out.println("    7 - Sair");
-
-            System.out.println(" --------------------------------------------");
-            System.out.print("  Qual operação deseja realizar ? ");
+            System.out.println(
+            """                    
+                    ==== ========= *** ========= ====
+                    [1] Consultar Saldo
+                    [2] Cheque Especial
+                    [3] Depósito
+                    [4] Saque
+                    [5] Pagar Boleto
+                    [6] Estou no Cheque?
+                    [7] Encerrar sessão                    
+                    ==== ========= *** ========= ====
+                    """);
+            System.out.print("Digite a operação: ");
 
             option = scan.nextInt();
 
             switch (option) {
                 case 1 -> {
-                    System.out.println(" --------------------------------------------");
-                    System.out.println("   Consultar saldo: ");
-                    System.out.printf("   R$ %.2f \n", conta.getSaldo());
-                    System.out.println(" --------------------------------------------");
+                    System.out.println("""
+                                    =================================
+                                             Consultar Saldo
+                                    =================================
+                                    """);
+                    System.out.printf("R$ %.2f \n", conta.getSaldo());
+
                 }
                 case 2 -> {
-                    System.out.println(" --------------------------------------------");
-                    System.out.println("   Consultar cheque especial: ");
-                    System.out.printf("   R$ %.2f \n", conta.getChequeEspecial());
-                    System.out.println(" --------------------------------------------");
+                    System.out.println("""
+                                    =================================
+                                        Consultar Cheque Especial
+                                    =================================
+                                    """);
+                    System.out.printf("R$ %.2f \n", conta.getChequeEspecial());
+
                 }
                 case 3 -> {
-                    System.out.println(" --------------------------------------------");
-                    System.out.println("   Depositar na conta: ");
-                    System.out.print("   Digite o valor a ser depositado: ");
+                    System.out.println("""
+                                    =================================
+                                            Depositar na conta
+                                    =================================
+                                    """);
+                    System.out.print("Digite o valor a ser depositado: ");
                     valor = scan.nextDouble();
                     conta.depositar(valor);
-                    System.out.println(" --------------------------------------------");
+
                 }
                 case 4 -> {
-                    System.out.println(" --------------------------------------------");
-                    System.out.println("   Sacar da conta: ");
-                    System.out.print("   Digite o valor a ser sacado: ");
+                    System.out.println("""
+                                    =================================
+                                                   Sacar
+                                    =================================
+                                    """);
+                    System.out.print("Digite o valor a ser sacado: ");
                     valor = scan.nextDouble();
                     conta.sacar(valor);
-                    System.out.println(" --------------------------------------------");
+
                 }
                 case 5 -> {
-                    System.out.println(" --------------------------------------------");
-                    System.out.println("   Pagar boleto: ");
-                    System.out.print("   Digite o valor do boleto: ");
+                    System.out.println("""
+                                    =================================
+                                                Pagar Boleto
+                                    =================================
+                                    """);
+                    System.out.print("Digite o valor do boleto: ");
                     valor = scan.nextDouble();
-                    System.out.print("   Digite a data de vencimento: ");
+                    System.out.print("Digite a data de vencimento: ");
                     String dataStr = scan.next();
                     LocalDate vencimento = LocalDate.parse(dataStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     conta.pagarBoleto(valor, vencimento);
-                    System.out.println(" --------------------------------------------");
+
+                }
+                case 6 -> {
+                    System.out.println("""
+                                    =================================
+                                       Entrei no Cheque Especial ?
+                                    =================================
+                                    """);
+                    System.out.println(conta.estouNoCheque());
+
                 }
                 default -> System.out.println("Opção inválida...");
             }

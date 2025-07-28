@@ -1,7 +1,6 @@
 package ExercicioContaBancaria;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 public class Conta {
     double saldo;
@@ -34,9 +33,15 @@ public class Conta {
         }
     }
 
+    public String estouNoCheque(){
+        if(saldo < 0) return String.format("Sim, você está usando R$ %.2f \n do seu cheque especial.\n", saldo * -1);
+        else return "Não está usando o cheque especial.";
+    }
+
     public void pagarBoleto(double valor, LocalDate vencimento){
         LocalDate hoje = LocalDate.now();
-        if(vencimento.compareTo(hoje) == -1) {
+        //System.out.printf("Hoje: %s --- Vencimento: %s\n", hoje, vencimento);
+        if(vencimento.compareTo(hoje) < 0) {
             System.out.println("Não foi possível realizar o pagamento. Prazo vencido.");
         }else{
             if (valor <= saldo + chequeEspecial) {
