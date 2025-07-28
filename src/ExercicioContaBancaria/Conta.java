@@ -1,5 +1,8 @@
 package ExercicioContaBancaria;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+
 public class Conta {
     double saldo;
     double chequeEspecial;
@@ -29,8 +32,22 @@ public class Conta {
         }else{
             System.out.println("Depósito não realizado.");
         }
+    }
 
+    public void pagarBoleto(double valor, LocalDate vencimento){
+        LocalDate hoje = LocalDate.now();
+        if(vencimento.compareTo(hoje) == -1) {
+            System.out.println("Não foi possível realizar o pagamento. Prazo vencido.");
+        }else{
+            if (valor <= saldo + chequeEspecial) {
+                saldo -= valor;
+                System.out.printf("Boleto de R$ %s pago com sucesso. \n", valor);
 
+            } else {
+                System.out.println("Saldo insuficiente.");
+            }
+
+        }
     }
 
         public void sacar(double valor){
@@ -57,7 +74,7 @@ public class Conta {
     private void cobrarJuros(){
         double jurosCobrado = calcularJurosChequeEspecial();
         saldo -= jurosCobrado;
-        System.out.printf("R$ %.2f debitado: juros do Cheque Especial.\n", jurosCobrado);
+        if(jurosCobrado > 0) System.out.printf("R$ %.2f debitado: juros do Cheque Especial.\n", jurosCobrado);
 
     }
 }

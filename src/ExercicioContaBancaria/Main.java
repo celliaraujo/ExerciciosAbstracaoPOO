@@ -1,5 +1,8 @@
 package ExercicioContaBancaria;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -56,6 +59,17 @@ public class Main {
                     System.out.print("   Digite o valor a ser sacado: ");
                     valor = scan.nextDouble();
                     conta.sacar(valor);
+                    System.out.println(" --------------------------------------------");
+                }
+                case 5 -> {
+                    System.out.println(" --------------------------------------------");
+                    System.out.println("   Pagar boleto: ");
+                    System.out.print("   Digite o valor do boleto: ");
+                    valor = scan.nextDouble();
+                    System.out.print("   Digite a data de vencimento: ");
+                    String dataStr = scan.next();
+                    LocalDate vencimento = LocalDate.parse(dataStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    conta.pagarBoleto(valor, vencimento);
                     System.out.println(" --------------------------------------------");
                 }
                 default -> System.out.println("Opção inválida...");
