@@ -14,9 +14,9 @@ public class Main {
 
         System.out.println(
                 """
-                ==================================
-                         SISTEMA BANCO GB
-                ======== Seja Bem-Vindo! =========
+                =================================
+                        SISTEMA BANCO GB
+                ======== Seja Bem-Vindo! ========
                 """);
 
         int option = 0;
@@ -31,7 +31,8 @@ public class Main {
                     [4] Saque
                     [5] Pagar Boleto
                     [6] Estou no Cheque?
-                    [7] Encerrar sessão                    
+                    [7] Exibir Extrato
+                    [8] Encerrar Sessão                
                     ==== ========= *** ========= ====
                     """);
             System.out.print("Digite a operação: ");
@@ -102,9 +103,25 @@ public class Main {
                     System.out.println(conta.estouNoCheque());
 
                 }
+                case 7 -> {
+                    System.out.println("""
+                                    =================================
+                                             Exibir Extrato
+                                    =================================
+                                    """);
+                    conta.exibirExtrato();
+
+                }
+                case 8 -> {
+                    System.out.println("""
+                                    =================================
+                                          Encerrando a Aplicação...
+                                    =================================
+                                    """);
+                }
                 default -> System.out.println("Opção inválida...");
             }
 
-        }while(option != 7);
+        }while(option != 8);
     }
 }
